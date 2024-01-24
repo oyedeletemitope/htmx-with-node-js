@@ -1,0 +1,35 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>HTMX Active Search</title>
+  </head>
+  <body>
+    <h3>Search Contacts</h3>
+    <input
+      class="form-control"
+      type="search"
+      name="search"
+      placeholder="Begin Typing To Search Users..."
+      hx-post="http://localhost:3001/search"
+      hx-trigger="input changed delay:500ms, search"
+      hx-target="#search-results"
+      hx-indicator=".htmx-indicator"
+    />
+    <span class="htmx-indicator" style="visibility: hidden">
+      <img src="/img/loading.gif" alt="Loading..." />
+    </span>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Email</th>
+        </tr>
+      </thead>
+      <tbody id="search-results"></tbody>
+    </table>
+    <script src="https://unpkg.com/htmx.org"></script>
+  </body>
+</html>
